@@ -19,7 +19,7 @@ const SongList = () => {
     console.log("useEffect hook ran on age", age);
   }, [age]);
   return (
-    <div className="sing-list">
+    <div className="song-list">
       <ul>
         {songs.map((song) => {
           return <li key={song.id}>{song.title}</li>;
