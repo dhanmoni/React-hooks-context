@@ -1,9 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useReducer } from "react";
+import { ThemeReducer } from "../Reducer/ThemeReducer";
 
 export const ThemeContext = createContext();
 
 const ThemeContextProvider = (props) => {
-  const [isLightTheme, setIsLightTheme] = useState(true);
+  const [isLightTheme, dispatch] = useReducer(ThemeReducer, true);
   const [light] = useState({
     syntax: "#555",
     ui: "#ddd",
@@ -14,11 +15,9 @@ const ThemeContextProvider = (props) => {
     ui: "#333",
     bg: "#555",
   });
-  const toggleTheme = () => {
-    setIsLightTheme((isLightTheme) => !isLightTheme);
-  };
+
   return (
-    <ThemeContext.Provider value={{ isLightTheme, light, dark, toggleTheme }}>
+    <ThemeContext.Provider value={{ isLightTheme, light, dark, dispatch }}>
       {props.children}
     </ThemeContext.Provider>
   );

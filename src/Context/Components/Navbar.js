@@ -5,13 +5,13 @@ import { AuthContext } from "../ContextAPI/AuthContext";
 //CONTEXT USING FUNCTIONAL COMPONENT WITH USECONTEXT API
 
 const Navbar = () => {
-  const { isAuthenticated, toggleAuth } = useContext(AuthContext);
+  const { isAuthenticated, dispatch } = useContext(AuthContext);
   const { isLightTheme, light, dark } = useContext(ThemeContext);
   const theme = isLightTheme ? light : dark;
   return (
     <nav style={{ backgroundColor: theme.ui, color: theme.syntax }}>
       <h2>Context App</h2>
-      <div onClick={toggleAuth}>
+      <div onClick={() => dispatch({ type: "TOGGLE_AUTH" })}>
         {isAuthenticated ? "Logged in" : "Logged out"}
       </div>
       <ul>
