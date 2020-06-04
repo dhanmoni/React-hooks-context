@@ -36,3 +36,7 @@ nav ul li {
   margin: 10px auto;
   border-radius: 10px;
 }
+input[type="text"] {
+  padding: 10px;
+  margin: 0 10px;
+}
