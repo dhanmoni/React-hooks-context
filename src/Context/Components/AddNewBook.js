@@ -2,11 +2,11 @@ import React, { useState, useContext } from "react";
 import { BookContext } from "../ContextAPI/BookContext";
 
 const AddNewBook = () => {
-  const { addBook } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
   const [book, setBook] = useState("");
   const handleAddBook = (e) => {
     e.preventDefault();
-    addBook(book);
+    dispatch({ type: "ADD_BOOK", title: book });
     setBook("");
   };
   return (

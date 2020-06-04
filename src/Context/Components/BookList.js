@@ -6,7 +6,7 @@ import { BookContext } from "../ContextAPI/BookContext";
 
 const BookList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
-  const { books } = useContext(BookContext);
+  const { books, dispatch } = useContext(BookContext);
   const theme = isLightTheme ? light : dark;
   return (
     <div
@@ -16,8 +16,22 @@ const BookList = () => {
       <ul>
         {books.map((book) => {
           return (
-            <li key={book.id} style={{ backgroundColor: theme.ui }}>
+            <li
+              key={book.id}
+              style={{
+                backgroundColor: theme.ui,
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
               {book.title}
+              <span
+                className="cross"
+                onClick={() => dispatch({ type: "REMOVE_BOOK", id: book.id })}
+              >
+                X
+              </span>
             </li>
           );
         })}
